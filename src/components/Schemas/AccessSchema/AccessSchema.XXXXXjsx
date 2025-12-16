@@ -1,0 +1,130 @@
+// src/components/Schemas/AccessSchema/AccessSchema.jsx
+import React, { useState } from 'react';
+import EquipmentChart from './EquipmentChart/EquipmentChart';
+import './AccessSchema.css';
+
+const AccessSchema = ({ equipment = [] }) => {
+  const [selectedEquipment, setSelectedEquipment] = useState(null);
+  const [showChart, setShowChart] = useState(false);
+
+  const handleEquipmentClick = (equipmentItem) => {
+    setSelectedEquipment(equipmentItem);
+    setShowChart(true);
+  };
+
+  const handleCloseChart = () => {
+    setShowChart(false);
+    setSelectedEquipment(null);
+  };
+
+  return (
+    <div className="access-schema-container">
+      <div className="schema-main">
+        <div className="schema-header">
+          <h3>Мнемосхема системы контроля доступа</h3>
+          <div className="schema-info">
+            Всего устройств: {equipment.length}
+            {selectedEquipment && (
+              <span className="selected-info">
+                | Выбрано: {selectedEquipment.name}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="schema-content">
+          {/* SVG схема */}
+          <div className="schema-svg-container">
+            <svg className="schema-svg" viewBox="0 0 800 600">
+              {/* Основные элементы схемы */}
+              <rect x="50" y="50" width="700" height="500" 
+                    className="schema-background" />
+              
+              {/* Серверная стойка */}
+              <g className="server-rack">
+                <rect x="100" y="100" width="200" height="300" 
+                      className="rack" />
+                <text x="200" y="80" className="rack-label">Серверная</text>
+                
+                {/* Условные обозначения оборудования */}
+                {equipment.map((item, index) => {
+                  const x = 120 + (index % 3) * 60;
+                  const y = 120 + Math.floor(index / 3) * 70;
+                  
+                  return (
+                    <g 
+                      key={item.id || index}
+                      className={`schema-element ${item.status?.toLowerCase() || 'normal'}`}
+                      onClick={() => handleEquipmentClick(item)}
+                    >
+                      <circle cx={x} cy={y} r="20" />
+                      <text x={x} y={y - 30} className="element-label">
+                        {item.name.substring(0, 10)}
+                      </text>
+                      <text x={x} y={y + 5} className="element-status">
+                        {item.status}
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+
+              {/* Потоковые линии */}
+              <path d="M350 250 L550 250" className="connection-line" />
+              <path d="M550 250 L550 400" className="connection-line" />
+              
+              {/* Контрольная панель */}
+              <g className="control-panel">
+                <rect x="550" y="350" width="150" height="100" 
+                      className="panel" />
+                <text x="625" y="340" className="panel-label">
+                  Контрольная панель
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          {/* Легенда */}
+          <div className="schema-legend">
+            <h4>Легенда схемы</h4>
+            <div className="legend-items">
+              <div className="legend-item">
+                <div className="status-dot normal"></div>
+                <span>Нормальная работа</span>
+              </div>
+              <div className="legend-item">
+                <div className="status-dot warning"></div>
+                <span>Требует внимания</span>
+              </div>
+              <div className="legend-item">
+                <div className="status-dot critical"></div>
+                <span>Критическое состояние</span>
+              </div>
+              <div className="legend-item">
+                <div className="status-dot unknown"></div>
+                <span>Статус неизвестен</span>
+              </div>
+            </div>
+            
+            <div className="legend-instruction">
+              <span className="material-icons">touch_app</span>
+              Кликните на элемент схемы для просмотра графиков
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* График оборудования (показывается при выборе) */}
+      {showChart && selectedEquipment && (
+        <div className="chart-sidebar">
+          <EquipmentChart 
+            equipment={selectedEquipment}
+            onClose={handleCloseChart}
+          />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AccessSchema;

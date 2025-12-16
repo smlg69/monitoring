@@ -1,0 +1,232 @@
+/* src/pages/AccessPage.css */
+/* Стили специфичные для страницы AccessPage */
+
+/* API статус */
+.api-status {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 4px;
+  background: #f5f5f5;
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2196f3;
+}
+
+.status-success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4caf50;
+}
+
+.status-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f44336;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* API бейдж */
+.api-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  background: #2196f3;
+  color: white;
+  border-radius: 10px;
+  font-size: 10px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* Отладка */
+.debug-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  background: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.debug-btn:hover {
+  background: #f57c00;
+}
+
+/* Обновление */
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 15px;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.refresh-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #1976d2;
+}
+
+.card-controls-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Детали API */
+.api-details-card {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #2196f3;
+  position: relative;
+}
+
+.api-details-card h5 {
+  margin-top: 0;
+  color: #2196f3;
+  margin-right: 30px;
+}
+
+.api-parameters {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.api-param {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+}
+
+.param-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.param-value {
+  font-weight: 600;
+  color: #333;
+  word-break: break-all;
+  max-width: 150px;
+}
+
+.close-details-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.close-details-btn:hover {
+  color: #333;
+}
+
+/* Пагинация */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-top: 1px solid #dee2e6;
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-pages {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.pagination-page {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.pagination-page:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.pagination-page.active {
+  background: #2196f3;
+  color: white;
+  border-color: #2196f3;
+}
+
+.pagination-ellipsis {
+  padding: 0 8px;
+  color: #6c757d;
+}
+
+.pagination-info {
+  color: #6c757d;
+  font-size: 14px;
+}

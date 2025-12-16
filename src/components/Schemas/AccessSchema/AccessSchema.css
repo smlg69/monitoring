@@ -1,0 +1,218 @@
+/* src/components/Schemas/AccessSchema/AccessSchema.css */
+.access-schema-container {
+  display: flex;
+  gap: 20px;
+  height: 600px;
+}
+
+.schema-main {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schema-header {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.schema-header h3 {
+  margin: 0 0 10px 0;
+  color: #1e293b;
+}
+
+.schema-info {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.selected-info {
+  color: #3b82f6;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.schema-content {
+  display: flex;
+  gap: 30px;
+  height: calc(100% - 80px);
+}
+
+.schema-svg-container {
+  flex: 2;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: auto;
+  background: #f8fafc;
+}
+
+.schema-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Стили для элементов SVG */
+.schema-background {
+  fill: #f1f5f9;
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
+
+.rack {
+  fill: white;
+  stroke: #94a3b8;
+  stroke-width: 2;
+  rx: 4;
+}
+
+.rack-label {
+  fill: #475569;
+  font-size: 14px;
+  font-weight: 500;
+  text-anchor: middle;
+}
+
+.schema-element {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.schema-element:hover {
+  transform: scale(1.1);
+}
+
+.schema-element circle {
+  stroke-width: 2;
+}
+
+.schema-element.normal circle {
+  fill: #10b981;
+  stroke: #059669;
+}
+
+.schema-element.warning circle {
+  fill: #f59e0b;
+  stroke: #d97706;
+}
+
+.schema-element.critical circle {
+  fill: #ef4444;
+  stroke: #dc2626;
+}
+
+.schema-element.unknown circle {
+  fill: #94a3b8;
+  stroke: #64748b;
+}
+
+.element-label {
+  fill: #1e293b;
+  font-size: 10px;
+  font-weight: 500;
+  text-anchor: middle;
+}
+
+.element-status {
+  fill: #475569;
+  font-size: 9px;
+  text-anchor: middle;
+}
+
+.connection-line {
+  fill: none;
+  stroke: #cbd5e1;
+  stroke-width: 2;
+  stroke-dasharray: 5,5;
+}
+
+.panel {
+  fill: white;
+  stroke: #3b82f6;
+  stroke-width: 2;
+  rx: 6;
+}
+
+.panel-label {
+  fill: #3b82f6;
+  font-size: 12px;
+  font-weight: 500;
+  text-anchor: middle;
+}
+
+/* Легенда */
+.schema-legend {
+  flex: 1;
+  max-width: 250px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.schema-legend h4 {
+  margin: 0 0 15px 0;
+  color: #1e293b;
+  font-size: 16px;
+}
+
+.legend-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-dot.normal {
+  background: #10b981;
+}
+
+.status-dot.warning {
+  background: #f59e0b;
+}
+
+.status-dot.critical {
+  background: #ef4444;
+}
+
+.status-dot.unknown {
+  background: #94a3b8;
+}
+
+.legend-instruction {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: #e0f2fe;
+  border-radius: 6px;
+  color: #0369a1;
+  font-size: 14px;
+}
+
+.legend-instruction .material-icons {
+  font-size: 18px;
+}
+
+/* Боковая панель с графиком */
+.chart-sidebar {
+  width: 400px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
